@@ -2,10 +2,57 @@ var timerEl = document.getElementById('timer');
 var mainEl = document.getElementById('main');
 var startBtn = document.getElementById('start-btn');
 
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
+
+var myQuestions = [
+    {
+        question: 'Math.random() returns...',
+        answers: {
+            a: 'a random number that can be any value',
+            b: 'a random number between 0 and 100',
+            c: 'a random number between 0 and 1',
+            d: 'a random number between 0 and 1000'
+        },
+        correctAnswer: 'c'
+    },
+    {
+        question: 'Which of the following type of variable is visible only within a function where it is defined?',
+        answers: {
+            a: 'global variable',
+            b: 'local variable',
+            c: 'Both of the above',
+            d: 'none of the above'
+        },
+        correctAnswer: 'b'
+    },
+    {
+        question: 'Which built-in method returns the calling string value converted to upper case?',
+        answers: {
+            a: 'toUpperCase()',
+            b: 'toUpper()',
+            c: 'changeCase(case)',
+            d: 'None of the above'
+        },
+        correctAnswer: 'a'
+    },
+    {
+        question: 'How does JavaScript store dates in a date object?',
+        answers: {
+            a: 'The number of milliseconds since January 1st, 1970',
+            b: 'The number of days since January 1st, 1900',
+            c: 'The number of seconds since Netscape\'s public stock offering',
+            d: 'None of the above'
+        },
+    }
+    // Ans: A
+];
+
 var message = 'Time is up!';
 var words = message.split(' ');
 
-// Timer that counts down
+// TIMER FUNCTION
 function countdown() {
     var timeLeft = 10;
 
@@ -27,57 +74,51 @@ function countdown() {
     }, 1000);
 };
 
+function buildQuiz(){
+    // variable to store the HTML output
+    const output = [];
+  
+    // for each question...
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
+  
+        // variable to store the list of possible answers
+        const answers = [];
+  
+        // and for each available answer...
+        for(letter in currentQuestion.answers){
+  
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
+        }
+  
+        // add this question and its answers to the output
+        output.push(
+          `<div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join('')} </div>`
+        );
+      }
+    );
+  
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join('');
+  }
 
+function showResults(){}
+
+// display quiz right away
+buildQuiz();
+
+
+
+// on submit, show results
+// submitButton.addEventListener('click', showResults);
 startBtn.onclick = countdown;
 
 
-// var startBtnEl = document.querySelector('#start-btn');
-// var timerDisplay = document.querySelector('#timer');
-// var counter = 10;
-
-
-// // var startTimer = function() {
-// //     var timerEl = document.createElement('p');
-// //     timerEl.className = 'start-btn';
-// //     timerEl.appendChild(timerDisplay)
-// // };
-
-// // COUNTDOWN FUNCTION
-// var countdown = function(){
-//     console.log(counter);
-//     counter--;
-//         if(counter === 0){
-//             console.log('Times Up!');
-//             clearInterval(startCountdown);
-//         };
-
-// };
-// var startCountdown = setInterval(countdown, 1000);
-
-
-// startBtnEl.addEventListener('click', countdown);
-
-
-
-// Video in lesson 4.1.7 on callback functions gave this code
-// var counter= 10
-// var countdown = function() {
-//     console.log(counter);
-//     counter--;
-//         if(counter === 0) {
-//             console.log('blastoff');
-//             clearInterval(startCountdown);
-//         };
-// };
-
-// var startCountdown = setInterval(countdown, 1000);
-
-// **********************************************************
-
-// var sayHello = function() {
-//     console.log('hello there');
-// };
-
-// var timedGreeting = setTimeout(sayHello, 2000);
-
-// clearTimeout(timedGreeting);
