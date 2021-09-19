@@ -1,0 +1,57 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+:root {
+    --primary: maroon;
+    --secondary: white;
+    --tertiary: gray;
+    font-size: 62.5%
+}
+
+/* HEADER START */
+.header-container {
+    display: flex;
+    border: 2px solid red;
+}
+
+.header-item {
+    border: 2px solid black;
+    flex: 3;
+}
+
+.hs-container {
+    text-align: left;
+    padding: 0 50px 0 0;
+}
+
+.timer-container {
+    text-align: right;
+}
+/* HEADER END */
+
+main {
+    border: 2px solid green;
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: var(--primary);
+}
