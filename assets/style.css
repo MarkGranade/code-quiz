@@ -176,6 +176,11 @@ main {
 	margin-bottom: 5%;
 }
 
+.timer {
+	right: 10px;
+	text-align: right;
+}
+
 footer {
 	border-top: 1px solid #ccc;
 	display: flex;

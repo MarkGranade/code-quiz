@@ -6,7 +6,6 @@ var alertEl = document.querySelector(".alert");
 var highscoreBtn = document.getElementById("highscoreBtn");
 var homeBtn = document.getElementById("homeBtn");
 var highscoreEl = document.querySelector(".highscores");
-// TODO: change variable names
 var initialEl = document.querySelector(".initials");
 var scoresEl = document.querySelector(".highscores");
 var buttonTwo = document.querySelector("#homeBtn");
@@ -16,7 +15,7 @@ var resetInitials = document.querySelector("#inputEl");
 var clearBtn = document.getElementById("clearBtn");
 var viewScores = document.getElementById("highscore-link");
 var hideH2 = document.getElementById("hide");
-var resultsID = document.querySelector("#resultsID");
+var resultsID = document.getElementById("#resultsID");
 
 // QUESTION ARRAY
 var questions = [
@@ -67,7 +66,7 @@ var questions = [
 var currentQuestion = 0;
 var previousQuestion = questions.length - 1;
 var score = 0;
-// var timeLeft = "";
+var timeLeft = "";
 var setIntervalId = "";
 var highScores = [];
 
@@ -153,7 +152,6 @@ function startGame() {
 
 // end quiz and collect time left
 function endGame() {
-	// TODO: change this around to look different
 	clearInterval(setIntervalId);
 	initialEl.classList.remove("hide");
 	scoresEl.classList.remove("hide");
@@ -164,14 +162,13 @@ function endGame() {
 
 // stores final scores
 function finalScores() {
-	// TODO: change variable names (li1)
 	window.localStorage.getItem("high scores");
 	JSON.parse(window.localStorage.getItem("high scores"));
 	var highScoreArray = JSON.parse(window.localStorage.getItem("high scores"));
 	resultsID.innerHTML = "";
-	for (let index = 0; index < highScoreArray.length; index++) {
+	for (let i = 0; i < highScoreArray.length; i++) {
 		const li1 = document.createElement("li");
-		li1.textContent = highScoreArray[index];
+		li1.textContent = highScoreArray[i];
 		resultsID.appendChild(li1);
 	}
 }
